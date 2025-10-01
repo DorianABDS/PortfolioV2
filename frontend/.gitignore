@@ -1,0 +1,36 @@
+# Node modules & cache
+node_modules/
+.pnpm-store/
+dist/
+dist-ssr/
+.vite/
+
+# Logs
+logs
+*.log
+npm-debug.log*
+pnpm-debug.log*
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Editor directories and files
+.vscode/
+!.vscode/extensions.json
+.idea/
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Docker
+docker-compose.override.yml
+.docker/
+*.dockerfile
+
+# OS generated files
+Thumbs.db
