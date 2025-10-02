@@ -1,23 +1,23 @@
-# Utiliser Node LTS
-FROM node:20
+# 1. Base Node
+FROM node:20-alpine
 
-# Créer le répertoire de travail
+# 2. Créer le dossier de travail
 WORKDIR /app
 
-# Copier package.json et pnpm-lock.yaml
+# 3. Copier uniquement les fichiers de dépendances pour profiter du cache Docker
 COPY package.json pnpm-lock.yaml* ./
 
-# Installer pnpm
+# 4. Installer pnpm globalement
 RUN npm install -g pnpm
 
-# Installer les dépendances
-RUN pnpm install
+# 5. Installer toutes les dépendances
+RUN pnpm install --frozen-lockfile
 
-# Copier tout le code
+# 6. Copier tout le code source
 COPY . .
 
-# Exposer le port
+# 7. Exposer le port
 EXPOSE 5000
 
-# Lancer le serveur
+# 8. Commande pour démarrer le backend
 CMD ["node", "server.js"]
