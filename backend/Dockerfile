@@ -1,23 +1,21 @@
-# 1. Base Node
+# Étape 1 : base node
 FROM node:20-alpine
 
-# 2. Créer le dossier de travail
+# Étape 2 : dossier de travail
 WORKDIR /app
 
-# 3. Copier uniquement les fichiers de dépendances pour profiter du cache Docker
-COPY package.json pnpm-lock.yaml* ./
+# Étape 3 : copier package.json et pnpm-lock.yaml
+COPY package.json pnpm-lock.yaml ./
 
-# 4. Installer pnpm globalement
+# Étape 4 : installer pnpm et les dépendances
 RUN npm install -g pnpm
+RUN pnpm install
 
-# 5. Installer toutes les dépendances
-RUN pnpm install --frozen-lockfile
-
-# 6. Copier tout le code source
+# Étape 5 : copier le code source
 COPY . .
 
-# 7. Exposer le port
-EXPOSE 5000
+# Étape 6 : exposer le port Vite
+EXPOSE 5173
 
-# 8. Commande pour démarrer le backend
-CMD ["node", "server.js"]
+# Étape 7 : démarrer le dev server
+CMD ["pnpm", "run", "dev"]
