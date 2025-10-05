@@ -1,6 +1,6 @@
-import { useState } from 'react';
 import Overlay from './components/Overlay';
 import ScrollContainer from './components/ScrollContainer';
+import BodyBackground from './components/BodyBackground';
 import HeroSection from './components/sections/HeroSection';
 import AboutSection from './components/sections/AboutSection';
 import ProjectSection from './components/sections/ProjectSection';
@@ -10,23 +10,24 @@ import bgImage from "./assets/img/bg-pf.webp";
 
 export default function App() {
   const totalSections = 4;
-  const { currentSection, setCurrentSection } = useScrollSection(totalSections);
+  const { currentSection } = useScrollSection(totalSections);
 
   return (
-    <div className="h-screen overflow-hidden bg-black">
-      <Overlay />
+    <div className="h-screen overflow-hidden">
+      <BodyBackground />
+      <Overlay color="rgb(20,20,20)" />
 
       <ScrollContainer currentSection={currentSection}>
         <HeroSection
           bgImage={bgImage}
-          title="HeroSection"
+          title="Section 1"
         />
 
-        <AboutSection title="AboutSection" />
+        <AboutSection title="Section 2" />
 
-        <ProjectSection title="ProjectSection" />
+        <ProjectSection title="Section 3" />
 
-        <ContactSection title="ContactSection" />
+        <ContactSection title="Section 4" />
       </ScrollContainer>
     </div>
   );
