@@ -1,6 +1,7 @@
 import Overlay from './components/Overlay';
 import ScrollContainer from './components/ScrollContainer';
 import BodyBackground from './components/BodyBackground';
+import Navbar from './components/Navbar';
 import HeroSection from './components/sections/HeroSection';
 import AboutSection from './components/sections/AboutSection';
 import ProjectSection from './components/sections/ProjectSection';
@@ -15,6 +16,7 @@ export default function App() {
     <div className="h-screen overflow-hidden">
       <BodyBackground />
       <Overlay color="rgb(20,20,20)" />
+      <Navbar />
 
       <ScrollContainer currentSection={currentSection}>
         <HeroSection />
