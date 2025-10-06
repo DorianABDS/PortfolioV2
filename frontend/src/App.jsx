@@ -6,7 +6,6 @@ import AboutSection from './components/sections/AboutSection';
 import ProjectSection from './components/sections/ProjectSection';
 import ContactSection from './components/sections/ContactSection';
 import useScrollSection from './hooks/useScrollSection';
-import bgImage from "./assets/img/bg-pf.webp";
 
 export default function App() {
   const totalSections = 4;
@@ -18,10 +17,7 @@ export default function App() {
       <Overlay color="rgb(20,20,20)" />
 
       <ScrollContainer currentSection={currentSection}>
-        <HeroSection
-          bgImage={bgImage}
-          title="Section 1"
-        />
+        <HeroSection />
 
         <AboutSection title="Section 2" />
 
