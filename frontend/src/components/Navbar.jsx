@@ -1,24 +1,32 @@
 import { Home, User, Briefcase, Mail } from 'lucide-react';
 
 export default function Navbar() {
-    // Base styles
-    const navBase = "fixed top-1/2 -translate-y-1/2 z-50 bg-[#585858]/20 backdrop-blur-xs rounded-full";
-    const navListBase = "flex flex-col text-white";
+    // Base styles for desktop (vertical)
+    const navBaseDesktop = "fixed top-1/2 -translate-y-1/2 z-50 bg-[#585858]/20 backdrop-blur-xs rounded-full hidden md:block";
+    const navListBaseDesktop = "flex flex-col text-white";
+
+    // Base styles for mobile (horizontal)
+    const navBaseMobile = "fixed bottom-0 left-0 right-0 z-50 bg-[#141414] backdrop-blur-md md:hidden rounded-t-[30px]";
+    const navListBaseMobile = "flex flex-row text-white justify-around items-center";
+
     const navItemBase = "transition-all duration-300 hover:bg-white cursor-pointer flex items-center justify-center rounded-full group";
     const iconBase = "text-white group-hover:text-black transition-colors duration-300";
 
-    // Responsive classes for nav
-    const navSizes = {
-        sm: "right-[20px] px-0.5 py-3",
+    // Responsive classes for desktop nav
+    const navSizesDesktop = {
         md: "md:right-[20px] md:px-1 md:py-4",
         lg: "lg:right-[20px] lg:px-1 lg:py-5",
         xl: "xl:right-[20px] xl:px-1 xl:py-6",
         "2xl": "2xl:right-[20px] 2xl:px-1 2xl:py-7",
     };
 
-    // Responsive classes for nav list
-    const navListSizes = {
-        sm: "gap-4",
+    // Responsive classes for mobile nav
+    const navSizesMobile = {
+        sm: "py-4",
+    };
+
+    // Responsive classes for desktop nav list
+    const navListSizesDesktop = {
         md: "md:gap-10",
         lg: "lg:gap-12",
         xl: "xl:gap-14",
@@ -43,9 +51,14 @@ export default function Navbar() {
         "2xl": "2xl:w-10 2xl:h-10",
     };
 
-    // Assembling responsive classes
-    const navClass = `${navBase} ${navSizes.sm} ${navSizes.md} ${navSizes.lg} ${navSizes.xl} ${navSizes["2xl"]}`;
-    const navListClass = `${navListBase} ${navListSizes.sm} ${navListSizes.md} ${navListSizes.lg} ${navListSizes.xl} ${navListSizes["2xl"]}`;
+    // Assembling responsive classes for desktop
+    const navClassDesktop = `${navBaseDesktop} ${navSizesDesktop.md} ${navSizesDesktop.lg} ${navSizesDesktop.xl} ${navSizesDesktop["2xl"]}`;
+    const navListClassDesktop = `${navListBaseDesktop} ${navListSizesDesktop.md} ${navListSizesDesktop.lg} ${navListSizesDesktop.xl} ${navListSizesDesktop["2xl"]}`;
+
+    // Assembling responsive classes for mobile
+    const navClassMobile = `${navBaseMobile} ${navSizesMobile.sm}`;
+    const navListClassMobile = navListBaseMobile;
+
     const navItemClass = `${navItemBase} ${navItemSizes.sm} ${navItemSizes.md} ${navItemSizes.lg} ${navItemSizes.xl} ${navItemSizes["2xl"]}`;
     const iconClass = `${iconBase} ${iconSizes.sm} ${iconSizes.md} ${iconSizes.lg} ${iconSizes.xl} ${iconSizes["2xl"]}`;
 
@@ -57,14 +70,28 @@ export default function Navbar() {
     ];
 
     return (
-        <nav className={navClass}>
-            <ul className={navListClass}>
-                {menuItems.map((item, index) => (
-                    <li key={index} className={navItemClass} title={item.label}>
-                        <item.icon className={iconClass} />
-                    </li>
-                ))}
-            </ul>
-        </nav>
+        <>
+            {/* Mobile Navigation - Bottom horizontal full width */}
+            <nav className={navClassMobile}>
+                <ul className={navListClassMobile}>
+                    {menuItems.map((item, index) => (
+                        <li key={index} className={navItemClass} title={item.label}>
+                            <item.icon className={iconClass} />
+                        </li>
+                    ))}
+                </ul>
+            </nav>
+
+            {/* Desktop Navigation - Right vertical */}
+            <nav className={navClassDesktop}>
+                <ul className={navListClassDesktop}>
+                    {menuItems.map((item, index) => (
+                        <li key={index} className={navItemClass} title={item.label}>
+                            <item.icon className={iconClass} />
+                        </li>
+                    ))}
+                </ul>
+            </nav>
+        </>
     );
 }
