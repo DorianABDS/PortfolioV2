@@ -40,7 +40,7 @@ export default function HeroSection() {
         sm: "text-3xl",
         md: "md:text-7xl",
         lg: "lg:text-[90px]",
-        xl: "xl:text-[120px]",
+        xl: "xl:text-[100px]",
         "2xl": "2xl:text-[150px]",
     };
 
@@ -49,7 +49,7 @@ export default function HeroSection() {
         sm: "text-sm w-auto mb-72",
         md: "md:text-base md:max-w-[550px] md:mb-60",
         lg: "lg:text-base lg:max-w-[600px] lg:mb-40",
-        xl: "xl:text-2xl xl:max-w-[800px] xl:mb-28",
+        xl: "xl:text-lg xl:max-w-[700px] xl:mb-1",
         "2xl": "2xl:text-xl 2xl:max-w-[900px] 2xl:mb-20",
     };
 
