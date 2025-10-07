@@ -30,7 +30,7 @@ export default function Navbar() {
         sm: "w-10 h-10",
         md: "md:w-11 md:h-11",
         lg: "lg:w-12 lg:h-12",
-        xl: "xl:w-14 xl:h-14",
+        xl: "xl:w-12 xl:h-12",
         "2xl": "2xl:w-16 2xl:h-16",
     };
 
@@ -39,7 +39,7 @@ export default function Navbar() {
         sm: "w-6 h-6",
         md: "md:w-7 md:h-7",
         lg: "lg:w-8 lg:h-8",
-        xl: "xl:w-9 xl:h-9",
+        xl: "xl:w-8 xl:h-8",
         "2xl": "2xl:w-10 2xl:h-10",
     };
 
