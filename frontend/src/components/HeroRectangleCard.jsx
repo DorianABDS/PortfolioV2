@@ -13,6 +13,7 @@ export default function HeroRectangleCard() {
     const rectangleButtonContainerBase = "flex items-center justify-center";
     const rectangleButtonBase = "w-full text-white hover:text-black font-semibold rounded-full transition-colors duration-300 flex items-center justify-between cursor-pointer uppercase tracking-wide relative overflow-hidden group outline outline-2 outline-white -outline-offset-2";
     const rectangleButtonIconBase = "rounded-full bg-white flex items-center justify-center shrink-0 outline outline-white -outline-offset-2";
+    const rectangleButtonAnimationBase = "absolute inset-0 bg-white origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ease-out rounded-full";
 
     // Responsive classes for rectangle
     const rectangleSizes = {
@@ -115,6 +116,7 @@ export default function HeroRectangleCard() {
     const rectangleButtonContainerClass = `${rectangleButtonContainerBase} ${rectangleButtonContainerSizes.sm} ${rectangleButtonContainerSizes.md} ${rectangleButtonContainerSizes.lg} ${rectangleButtonContainerSizes.xl} ${rectangleButtonContainerSizes["2xl"]}`;
     const rectangleButtonClass = `${rectangleButtonBase} ${rectangleButtonSizes.sm} ${rectangleButtonSizes.md} ${rectangleButtonSizes.lg} ${rectangleButtonSizes.xl} ${rectangleButtonSizes["2xl"]}`;
     const rectangleButtonIconClass = `${rectangleButtonIconBase} ${rectangleButtonIconSizes.sm} ${rectangleButtonIconSizes.md} ${rectangleButtonIconSizes.lg} ${rectangleButtonIconSizes.xl} ${rectangleButtonIconSizes["2xl"]}`;
+    const rectangleButtonAnimationClass = rectangleButtonAnimationBase;
 
     return (
         <div className={rectangleClass}>
@@ -152,7 +154,7 @@ export default function HeroRectangleCard() {
                             aria-label="Message instantanée"
                         >
                             {/* Animation background */}
-                            <span className="absolute inset-0 bg-white origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ease-out rounded-full"></span>
+                            <span className={rectangleButtonAnimationClass}></span>
 
                             {/* Button content */}
                             <span className="relative z-10">Message instantanée</span>
