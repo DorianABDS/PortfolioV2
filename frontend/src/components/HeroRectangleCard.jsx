@@ -17,7 +17,7 @@ export default function HeroRectangleCard() {
 
     // Responsive classes for rectangle
     const rectangleSizes = {
-        sm: "m-4 right-0 h-32 p-3",
+        sm: "mx-4 my-20 right-0 h-40 p-3 bg-[#585858]/40",
         md: "md:m-5 md:right-auto md:w-96 md:h-48 md:p-5",
         lg: "lg:m-6 lg:w-[450px] lg:h-56 lg:p-6",
         xl: "xl:m-8 xl:w-[400px] xl:h-52 xl:p-4",
