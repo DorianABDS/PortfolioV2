@@ -37,7 +37,7 @@ export default function HeroSection() {
 
     // Responsive classes for title
     const titleSizes = {
-        sm: "text-3xl",
+        sm: "text-4xl",
         md: "md:text-7xl",
         lg: "lg:text-[90px]",
         xl: "xl:text-[100px]",
