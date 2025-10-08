@@ -3,7 +3,7 @@ import { ArrowRight } from 'lucide-react';
 export default function HeroRectangleCard() {
     // Base styles
     const rectangleBase =
-        "absolute bottom-0 left-0 z-10 bg-[#585858]/20 backdrop-blur-xs rounded-[30px]";
+        "absolute bottom-0 left-0 z-10 bg-[#585858]/20 backdrop-blur-xs rounded-[30px] overflow-hidden";
     const rectangleWrapperBase = "flex text-white";
     const rectangleImageBase = "rounded-full object-cover";
     const rectangleTextContainerBase = "flex flex-col";
@@ -17,12 +17,12 @@ export default function HeroRectangleCard() {
 
     // Responsive classes for rectangle
     const rectangleSizes = {
-        sm: "mx-4 my-20 right-0 h-40 p-3 bg-[#585858]/40",
-        md: "md:m-5 md:right-auto md:w-96 md:h-48 md:p-5",
-        lg: "lg:m-6 lg:w-[450px] lg:h-56 lg:p-6",
-        xl: "xl:m-8 xl:w-[400px] xl:h-52 xl:p-4",
-        "2xl": "2xl:m-10 2xl:w-[550px] 2xl:h-72 2xl:p-8",
-    };
+        sm: "mx-4 my-20 right-0 min-h-40 p-3 bg-[#585858]/40",
+        md: "md:m-5 md:right-auto md:w-96 md:min-h-48 md:p-5",
+        lg: "lg:m-6 lg:w-[450px] lg:min-h-56 lg:p-6",
+        xl: "xl:m-8 xl:w-[400px] xl:min-h-52 xl:p-4",
+        "2xl": "2xl:m-10 2xl:w-[550px] 2xl:min-h-72 2xl:p-8",
+};
 
     // Responsive classes for rectangle wrapper
     const rectangleWrapperSizes = {
