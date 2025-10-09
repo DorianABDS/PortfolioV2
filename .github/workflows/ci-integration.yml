@@ -1,10 +1,8 @@
 name: CI - Integration Tests
 
 on:
-  push:
-    branches: [ main, ci ]
-  pull_request:
-    branches: [ main, ci]
+  workflow_call:
+  workflow_dispatch:
 
 jobs:
   integration-tests:
