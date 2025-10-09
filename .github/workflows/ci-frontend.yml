@@ -114,17 +114,3 @@ jobs:
           tags: portfoliov2-frontend:latest
           cache-from: type=gha,scope=frontend
           cache-to: type=gha,mode=max,scope=frontend
-
-      - name: Export Docker image
-        run: |
-          docker buildx build \
-            --tag portfoliov2-frontend:latest \
-            --output type=docker,dest=/tmp/frontend-image.tar \
-            ./frontend
-
-      - name: Upload Docker image
-        uses: actions/upload-artifact@v4
-        with:
-          name: frontend-docker-image
-          path: /tmp/frontend-image.tar
-          retention-days: 1

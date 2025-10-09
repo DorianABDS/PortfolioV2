@@ -76,17 +76,3 @@ jobs:
           tags: portfoliov2-backend:latest
           cache-from: type=gha,scope=backend
           cache-to: type=gha,mode=max,scope=backend
-
-      - name: Export Docker image
-        run: |
-          docker buildx build \
-            --tag portfoliov2-backend:latest \
-            --output type=docker,dest=/tmp/backend-image.tar \
-            ./backend
-
-      - name: Upload Docker image
-        uses: actions/upload-artifact@v4
-        with:
-          name: backend-docker-image
-          path: /tmp/backend-image.tar
-          retention-days: 1
