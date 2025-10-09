@@ -1,0 +1,61 @@
+name: CI - Main Pipeline
+
+on:
+  push:
+    branches: [ main, ci ]
+  pull_request:
+    branches: [ main, ci ]
+
+jobs:
+  # Job 1 & 2 : Frontend and Backend
+  frontend:
+    name: Frontend Pipeline
+    uses: ./.github/workflows/ci-frontend.yml
+
+  backend:
+    name: Backend Pipeline
+    uses: ./.github/workflows/ci-backend.yml
+
+  # Job 3 : Integration tests
+  integration:
+    name: Integration Tests
+    needs: [frontend, backend]
+    uses: ./.github/workflows/ci-integration.yml
+
+  # Job 4 : Summary
+  summary:
+    name: Pipeline Summary
+    needs: [frontend, backend, integration]
+    runs-on: ubuntu-latest
+    if: always()
+
+    steps:
+      - name: Check pipeline status
+        run: |
+          echo "======================================"
+          echo "        CI Pipeline Results"
+          echo "======================================"
+          echo ""
+
+          frontend_result="${{ needs.frontend.result }}"
+          backend_result="${{ needs.backend.result }}"
+          integration_result="${{ needs.integration.result }}"
+
+          echo "Frontend:    $frontend_result"
+          echo "Backend:     $backend_result"
+          echo "Integration: $integration_result"
+          echo ""
+
+          if [ "$frontend_result" = "success" ] && \
+             [ "$backend_result" = "success" ] && \
+             [ "$integration_result" = "success" ]; then
+            echo "======================================"
+            echo "✅ All CI checks passed successfully!"
+            echo "======================================"
+            exit 0
+          else
+            echo "======================================"
+            echo "❌ Some CI checks failed"
+            echo "======================================"
+            exit 1
+          fi
