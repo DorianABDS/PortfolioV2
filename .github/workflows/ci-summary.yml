@@ -8,7 +8,7 @@ on:
       - "CI - Integration Tests"
     types:
       - completed
-    branches: [ main, develop ]
+    branches: [ main, ci ]
 
 jobs:
   summary:
