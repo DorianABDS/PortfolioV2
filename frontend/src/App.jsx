@@ -21,7 +21,7 @@ export default function App() {
             <ScrollContainer currentSection={currentSection}>
                 <Hero />
 
-                <About title="Section 2" />
+                <About />
 
                 <Project title="Section 3" />
 
