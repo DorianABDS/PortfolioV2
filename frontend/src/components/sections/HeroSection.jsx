@@ -1,11 +1,13 @@
-import HeroRectangleCard from '../HeroRectangleCard';
+import HeroRectangleCard from "../HeroRectangleCard";
 
 export default function HeroSection() {
     // Base styles
     const sectionBase = "flex items-center justify-center";
-    const containerBase = "w-full h-full relative rounded-[30px] overflow-hidden";
+    const containerBase =
+        "w-full h-full relative rounded-[30px] overflow-hidden";
     const contentBase = "relative z-10 w-full h-full flex flex-col justify-end";
-    const titleBase = "uppercase font-orbitron leading-[1] text-white font-normal";
+    const titleBase =
+        "uppercase font-orbitron leading-[1] text-white font-normal";
     const descriptionBase = "text-white font-light";
 
     // Responsive classes for section
