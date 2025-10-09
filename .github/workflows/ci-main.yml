@@ -2,9 +2,9 @@ name: CI - Main Pipeline
 
 on:
   push:
-    branches: [ main, develop ]
+    branches: [ main, ci ]
   pull_request:
-    branches: [ main, develop ]
+    branches: [ main, ci ]
 
 jobs:
   # Job 1 & 2 : Frontend and Backend
