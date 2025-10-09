@@ -1,0 +1,77 @@
+name: CI - Integration Tests
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main, develop ]
+
+jobs:
+  integration-tests:
+    name: Docker Compose Tests
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Create .env file for backend
+        env:
+          MONGO_URI: ${{ secrets.MONGO_URI }}
+          PORT: ${{ secrets.PORT }}
+          NODE_ENV: ${{ secrets.NODE_ENV }}
+        run: |
+          cat > backend/.env << EOF
+          MONGO_URI=$MONGO_URI
+          PORT=$PORT
+          NODE_ENV=$NODE_ENV
+          EOF
+
+      - name: Start services with Docker Compose
+        run: docker-compose up -d --build
+
+      - name: Wait for backend to be ready
+        run: |
+          echo "Waiting for backend to be ready..."
+          timeout 90 bash -c 'until curl -f http://localhost:5000/api; do echo "Retrying..."; sleep 3; done'
+          echo "✓ Backend is ready!"
+
+      - name: Wait for frontend to be ready
+        run: |
+          echo "Waiting for frontend to be ready..."
+          timeout 60 bash -c 'until curl -f http://localhost:5173; do echo "Retrying..."; sleep 2; done'
+          echo "✓ Frontend is ready!"
+
+      - name: Test backend API
+        run: |
+          response=$(curl -s http://localhost:5000/api)
+          echo "Backend response: $response"
+          if [[ $response == *"API running"* ]]; then
+            echo "✓ Backend API health check passed"
+          else
+            echo "✗ Backend API health check failed"
+            exit 1
+          fi
+
+      - name: Test frontend accessibility
+        run: |
+          status_code=$(curl -s -o /dev/null -w "%{http_code}" http://localhost:5173)
+          if [ $status_code -eq 200 ]; then
+            echo "✓ Frontend is accessible (HTTP $status_code)"
+          else
+            echo "✗ Frontend returned HTTP $status_code"
+            exit 1
+          fi
+
+      - name: Show Docker logs on failure
+        if: failure()
+        run: |
+          echo "====== Backend Logs ======"
+          docker-compose logs backend
+          echo ""
+          echo "====== Frontend Logs ======"
+          docker-compose logs frontend
+
+      - name: Stop and clean services
+        if: always()
+        run: docker-compose down -v
