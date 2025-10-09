@@ -1,0 +1,54 @@
+name: CI - Pipeline Summary
+
+on:
+  workflow_run:
+    workflows:
+      - "CI - Frontend"
+      - "CI - Backend"
+      - "CI - Integration Tests"
+    types:
+      - completed
+    branches: [ main, develop ]
+
+jobs:
+  summary:
+    name: Pipeline Status Summary
+    runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion != 'cancelled' }}
+
+    steps:
+      - name: Check workflow status
+        run: |
+          workflow_name="${{ github.event.workflow_run.name }}"
+          workflow_status="${{ github.event.workflow_run.conclusion }}"
+
+          echo "======================================"
+          echo "Workflow: $workflow_name"
+          echo "Status: $workflow_status"
+          echo "======================================"
+
+          if [ "$workflow_status" = "success" ]; then
+            echo "✓ Workflow completed successfully"
+          else
+            echo "✗ Workflow failed or was skipped"
+          fi
+
+      - name: Report success
+        if: ${{ github.event.workflow_run.conclusion == 'success' }}
+        run: |
+          echo "✅ CI Pipeline check passed for:"
+          echo "   • Workflow: ${{ github.event.workflow_run.name }}"
+          echo "   • Branch: ${{ github.event.workflow_run.head_branch }}"
+          echo "   • Commit: ${{ github.event.workflow_run.head_sha }}"
+
+      - name: Report failure
+        if: ${{ github.event.workflow_run.conclusion == 'failure' }}
+        run: |
+          echo "❌ CI Pipeline check failed for:"
+          echo "   • Workflow: ${{ github.event.workflow_run.name }}"
+          echo "   • Branch: ${{ github.event.workflow_run.head_branch }}"
+          echo "   • Commit: ${{ github.event.workflow_run.head_sha }}"
+          echo ""
+          echo "Please check the logs at:"
+          echo "${{ github.event.workflow_run.html_url }}"
+          exit 1
