@@ -26,7 +26,7 @@ jobs:
           EOF
 
       - name: Start services with Docker Compose
-        run: docker-compose up -d --build
+        run: docker compose up -d --build
 
       - name: Wait for backend to be ready
         run: |
@@ -65,11 +65,11 @@ jobs:
         if: failure()
         run: |
           echo "====== Backend Logs ======"
-          docker-compose logs backend
+          docker compose logs backend
           echo ""
           echo "====== Frontend Logs ======"
-          docker-compose logs frontend
+          docker compose logs frontend
 
       - name: Stop and clean services
         if: always()
-        run: docker-compose down -v
+        run: docker compose down -v
