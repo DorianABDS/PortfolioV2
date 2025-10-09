@@ -1,11 +1,11 @@
-import Overlay from "./components/Overlay";
-import ScrollContainer from "./components/ScrollContainer";
-import BodyBackground from "./components/BodyBackground";
-import Navbar from "./components/Navbar";
-import HeroSection from "./components/sections/HeroSection";
-import AboutSection from "./components/sections/AboutSection";
-import ProjectSection from "./components/sections/ProjectSection";
-import ContactSection from "./components/sections/ContactSection";
+import Overlay from "./components/layout/Overlay";
+import ScrollContainer from "./components/layout/ScrollContainer";
+import BodyBackground from "./components/layout/BodyBackground";
+import Navbar from "./components/layout/Navbar";
+import Hero from "./components/pages/Hero";
+import About from "./components/pages/About";
+import Project from "./components/pages/Project";
+import Contact from "./components/pages/Contact";
 import useScrollSection from "./hooks/useScrollSection";
 
 export default function App() {
@@ -19,13 +19,13 @@ export default function App() {
             <Navbar />
 
             <ScrollContainer currentSection={currentSection}>
-                <HeroSection />
+                <Hero />
 
-                <AboutSection title="Section 2" />
+                <About title="Section 2" />
 
-                <ProjectSection title="Section 3" />
+                <Project title="Section 3" />
 
-                <ContactSection title="Section 4" />
+                <Contact title="Section 4" />
             </ScrollContainer>
         </div>
     );

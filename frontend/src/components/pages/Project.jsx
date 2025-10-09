@@ -1,4 +1,4 @@
-export default function AboutSection({ title, children }) {
+export default function Project({ title, children }) {
     return (
         <section className="h-screen flex items-center justify-center px-[30px]">
             <div className="w-full h-full flex flex-col items-center justify-center">

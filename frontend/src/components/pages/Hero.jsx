@@ -1,6 +1,6 @@
-import HeroRectangleCard from "../HeroRectangleCard";
+import HeroRectangleCard from "../cards/HeroRectangleCard";
 
-export default function HeroSection() {
+export default function Hero() {
     // Base styles
     const sectionBase = "flex items-center justify-center";
     const containerBase =
