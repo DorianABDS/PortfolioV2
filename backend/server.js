@@ -7,10 +7,17 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+// Route de test
 app.get('/api', (req, res) => {
   res.json({ message: 'API running' });
 });
 
+// ✨ AJOUTER CES LIGNES ✨
+// Importer et utiliser les routes skills
+const skillsRoutes = require('./routes/skills');
+app.use('/api/skills', skillsRoutes);
+
+// Connexion MongoDB
 mongoose.connect(process.env.MONGO_URI)
   .then(() => console.log('MongoDB connected'))
   .catch(err => console.log(err));
