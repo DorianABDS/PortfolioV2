@@ -12,7 +12,6 @@ app.get('/api', (req, res) => {
   res.json({ message: 'API running' });
 });
 
-// ✨ AJOUTER CES LIGNES ✨
 // Importer et utiliser les routes skills
 const skillsRoutes = require('./routes/skills');
 app.use('/api/skills', skillsRoutes);
@@ -24,3 +23,10 @@ mongoose.connect(process.env.MONGO_URI)
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+
+mongoose.connection.once('open', async () => {
+  console.log('✅ Connecté à MongoDB Atlas');
+
+  const collections = await mongoose.connection.db.listCollections().toArray();
+  console.log('📚 Collections disponibles :', collections.map(c => c.name));
+});
