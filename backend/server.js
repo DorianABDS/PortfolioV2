@@ -3,8 +3,9 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 require('dotenv').config();
 
-// Model import
+// Model imports
 const Skill = require('./models/Skill');
+const Project = require('./models/Project');
 
 const app = express();
 app.use(cors());
@@ -16,17 +17,48 @@ app.get('/api', (req, res) => {
 });
 
 // Route to retrieve skills from MongoDB
-app.get('/api/skills/grouped', async (req, res) => {
+app.get('/api/skills', async (req, res) => {
   try {
     const skills = await Skill.findOne();
-
     if (!skills) {
       return res.status(404).json({
         message: 'Aucune compétence trouvée'
       });
     }
-
     res.json(skills);
+  } catch (error) {
+    console.error('Erreur:', error);
+    res.status(500).json({
+      message: 'Erreur serveur',
+      error: error.message
+    });
+  }
+});
+
+// Route to retrieve all projects from MongoDB
+app.get('/api/projects', async (req, res) => {
+  try {
+    const projects = await Project.find().sort({ order: 1 });
+    res.json(projects);
+  } catch (error) {
+    console.error('Erreur:', error);
+    res.status(500).json({
+      message: 'Erreur serveur',
+      error: error.message
+    });
+  }
+});
+
+// Route to retrieve a single project by ID
+app.get('/api/projects/:id', async (req, res) => {
+  try {
+    const project = await Project.findById(req.params.id);
+    if (!project) {
+      return res.status(404).json({
+        message: 'Projet non trouvé'
+      });
+    }
+    res.json(project);
   } catch (error) {
     console.error('Erreur:', error);
     res.status(500).json({
