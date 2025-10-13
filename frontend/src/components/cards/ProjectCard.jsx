@@ -56,8 +56,7 @@ export default function ProjectCard({ project }) {
                             href={project.siteUrl}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="flex items-center gap-2 text-white
-                            hover:text-[#206C85] transition-colors"
+                            className="flex items-center gap-2 text-white hover:text-[#206C85] transition-colors"
                         >
                             <ExternalLink className="w-5 h-5" />
                             <span className="text-sm">Demo</span>

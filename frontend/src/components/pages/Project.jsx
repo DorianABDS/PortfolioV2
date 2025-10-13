@@ -1,4 +1,9 @@
+import useProjects from "../../hooks/useProject";
+import ProjectCard from "../cards/ProjectCard";
+
 export default function Project() {
+    const { projects, loading, error } = useProjects();
+
     // Base styles
     const sectionBase = "flex items-center justify-center";
     const containerBase = "w-full h-full relative rounded-[30px] overflow-hidden";
@@ -57,8 +62,25 @@ export default function Project() {
 
                     {/* Projects Section */}
                     <div className={projectsSectionClass}>
-                        {/* Vos projets ici */}
-                        <p className="text-white">Contenu</p>
+                        {loading && (
+                            <p className="text-white text-center">Chargement des projets...</p>
+                        )}
+                        
+                        {error && (
+                            <p className="text-red-500 text-center">Erreur: {error}</p>
+                        )}
+                        
+                        {!loading && !error && projects.length === 0 && (
+                            <p className="text-white text-center">Aucun projet disponible</p>
+                        )}
+                        
+                        {!loading && !error && projects.length > 0 && (
+                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                                {projects.map((project) => (
+                                    <ProjectCard key={project._id} project={project} />
+                                ))}
+                            </div>
+                        )}
                     </div>
                 </div>
             </div>
