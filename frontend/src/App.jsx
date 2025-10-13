@@ -23,11 +23,10 @@ export default function App() {
 
       {/* Container scrollable */}
       <ScrollContainer currentSection={currentSection}>
-        {/* Chaque section doit avoir h-screen pour prendre tout l’écran */}
-        <Hero title="Section 1" />
-        <About title="Section 2" />
-        <Project title="Section 3" />
-        <Contact title="Section 4" />
+        <Hero />
+        <About />
+        <Project />
+        <Contact />
       </ScrollContainer>
     </div>
   );
