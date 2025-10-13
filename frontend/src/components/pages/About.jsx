@@ -95,51 +95,8 @@ export default function About() {
                     {/* Description */}
                     <p className={descriptionClass}>
                         Je suis{" "}
-                        <span className="font-extrabold">
-                            développeur fullstack
-                        </span>
-                        , passionné par la création d'applications web
-                        complètes, du front-end à l'architecture back-end.
-                        Découvrez mes travaux dans la section{" "}
-                        <span className="font-extrabold">Projets</span>.
-                        <br />
-                        <br />
-                        Mon parcours m'a permis de renforcer mes compétences et
-                        d'élargir ma vision du développement. J'aime partager
-                        mes apprentissages et échanger avec d'autres
-                        développeurs.
-                        <br />
-                        <br />
-                        Je suis ouvert à de{" "}
-                        <span className="font-extrabold">
-                            nouvelles opportunités
-                        </span>
-                        . Contactez-moi via{" "}
-                        <a
-                            href="https://www.linkedin.com/in/dorian-abbadessa/"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="font-extrabold text-[#206C85] hover:text-[#154555] transition-colors"
-                        >
-                            LinkedIn
-                        </a>
-                        , ou à consulter mon{" "}
-                        <a
-                            href="https://github.com/DorianABDS"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="font-extrabold text-[#206C85] hover:text-[#154555] transition-colors"
-                        >
-                            GitHub
-                        </a>
-                        , ou à m'écrire directement par{" "}
-                        <a
-                            href="mailto:abbadessadorian@gmail.com"
-                            className="font-extrabold text-[#206C85] hover:text-[#154555] transition-colors"
-                        >
-                            mail
-                        </a>
-                        .
+                        <span className="font-extrabold">développeur fullstack</span>, passionné par la création d'applications web complètes. Je suis ouvert à de{" "}
+                        <span className="font-extrabold">nouvelles opportunités</span>.
                     </p>
 
                     {/* Skills Section */}
@@ -149,7 +106,7 @@ export default function About() {
                                 Chargement des compétences...
                             </p>
                         ) : (
-                            <div className="space-y-6">
+                            <div className="space-y-4">
                                 {/* Frontend Skills */}
                                 {skills.frontend &&
                                     skills.frontend.length > 0 && (
