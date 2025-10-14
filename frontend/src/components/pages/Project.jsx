@@ -65,15 +65,15 @@ export default function Project() {
                         {loading && (
                             <p className="text-white text-center">Chargement des projets...</p>
                         )}
-                        
+
                         {error && (
                             <p className="text-red-500 text-center">Erreur: {error}</p>
                         )}
-                        
+
                         {!loading && !error && projects.length === 0 && (
                             <p className="text-white text-center">Aucun projet disponible</p>
                         )}
-                        
+
                         {!loading && !error && projects.length > 0 && (
                             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                                 {projects.map((project) => (
