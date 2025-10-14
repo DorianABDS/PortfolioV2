@@ -10,7 +10,7 @@ export default function About() {
 
     // Retrieve skills from the API
     useEffect(() => {
-        fetch("http://localhost:5000/api/skills/grouped")
+        fetch("http://localhost:5000/api/skills")
             .then((res) => res.json())
             .then((data) => {
                 setSkills(data);
