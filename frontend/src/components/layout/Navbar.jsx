@@ -1,6 +1,6 @@
 import { Home, User, Briefcase, Mail } from 'lucide-react';
 
-export default function Navbar() {
+export default function Navbar({ setCurrentSection }) {
     // Base styles for desktop (vertical)
     const navBaseDesktop = "fixed top-1/2 -translate-y-1/2 z-50 bg-[#585858]/20 backdrop-blur-xs rounded-full hidden sm:block";
     const navListBaseDesktop = "flex flex-col text-white";
@@ -103,7 +103,7 @@ export default function Navbar() {
                     />
 
                     {menuItems.map((item, index) => (
-                        <li key={index} className={navItemClass} title={item.label}>
+                        <li key={index} className={navItemClass} onClick={() => setCurrentSection(index)} title={item.label}>
                             <item.icon className={iconClass} />
                         </li>
                     ))}
@@ -114,7 +114,7 @@ export default function Navbar() {
             <nav className={navClassDesktop}>
                 <ul className={navListClassDesktop}>
                     {menuItems.map((item, index) => (
-                        <li key={index} className={navItemClass} title={item.label}>
+                        <li key={index} className={navItemClass} onClick={() => setCurrentSection(index)} title={item.label}>
                             <item.icon className={iconClass} />
                         </li>
                     ))}

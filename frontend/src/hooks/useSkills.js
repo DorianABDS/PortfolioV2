@@ -1,0 +1,25 @@
+import { useState, useEffect } from "react";
+
+export default function useSkills() {
+  const [skills, setSkills] = useState({ frontend: [], backend: [], tools: [] });
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    fetch('http://localhost:5000/api/skills')
+      .then(res => res.json())
+      .then(data => {
+        if (data.length > 0) {
+          setSkills(data[0]);
+        }
+        setLoading(false);
+      })
+      .catch(err => {
+        console.error(err);
+        setError(err.message || "Erreur fetch");
+        setLoading(false);
+      });
+  }, []);
+
+  return { skills, loading, error };
+}
