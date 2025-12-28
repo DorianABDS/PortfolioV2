@@ -1,11 +1,8 @@
 export default function About() {
     // Base styles
     const sectionBase = "flex items-center justify-center";
-    const containerBase =
-        "w-full h-full relative rounded-[30px] overflow-hidden";
+    const containerBase = "w-full h-full relative rounded-[30px] overflow-hidden";
     const contentBase = "relative z-10 w-full pt-10 flex flex-col";
-    const titleBase =
-        "uppercase font-orbitron leading-[1] text-white font-normal text-2xl";
     const descriptionBase = "text-white font-light text-justify";
 
     // Responsive classes for section
@@ -19,20 +16,11 @@ export default function About() {
 
     // Responsive classes for container
     const containerSizes = {
-        sm: "p-6",
+        sm: "p-3",
         md: "md:p-12",
         lg: "lg:p-16",
         xl: "xl:p-20",
         "2xl": "2xl:p-[100px]",
-    };
-
-    // Responsive classes for title
-    const titleSizes = {
-        sm: "text-4xl",
-        md: "md:text-6xl",
-        lg: "lg:text-7xl",
-        xl: "xl:text-8xl",
-        "2xl": "2xl:text-9xl",
     };
 
     // Responsive classes for description
@@ -48,18 +36,15 @@ export default function About() {
     const sectionClass = `${sectionBase} ${sectionSizes.sm} ${sectionSizes.md} ${sectionSizes.lg} ${sectionSizes.xl} ${sectionSizes["2xl"]}`;
     const containerClass = `${containerBase} ${containerSizes.sm} ${containerSizes.md} ${containerSizes.lg} ${containerSizes.xl} ${containerSizes["2xl"]}`;
     const contentClass = `${contentBase}`;
-    const titleClass = `${titleBase} ${titleSizes.sm} ${titleSizes.md} ${titleSizes.lg} ${titleSizes.xl} ${titleSizes["2xl"]}`;
     const descriptionClass = `${descriptionBase} ${descriptionSizes.sm} ${descriptionSizes.md} ${descriptionSizes.lg} ${descriptionSizes.xl} ${descriptionSizes["2xl"]}`;
 
     return (
         <section className={sectionClass}>
             <div className={containerClass}>
                 <div className={contentClass}>
-                    {/* Title */}
-                    <h1 className={titleClass}>à propos</h1>
                     {/* Description */}
                     <p className={descriptionClass}>
-                        JJe suis{" "}
+                        Je suis{" "}
                         <span className="font-extrabold">
                             développeur fullstack
                         </span>
